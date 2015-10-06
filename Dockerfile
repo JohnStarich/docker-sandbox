@@ -7,6 +7,8 @@ RUN add-apt-repository ppa:webupd8team/java
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN apt-get update && apt-get install -y build-essential oracle-java8-installer tmux vim zip unzip wget curl netcat inetutils-ping inetutils-telnet inetutils-traceroute man git subversion python python3 python-pip python3-pip
 RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/cache/oracle-jdk8-installer
 
 ENTRYPOINT ["/bin/bash"]
 
