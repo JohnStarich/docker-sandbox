@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
         build-essential \
         oracle-java8-installer \
         python-dev python3-dev python-pip python3-pip gettext \
-        libsasl2-dev libssl-dev zlib1g-dev
+        libsasl2-dev openssl libssl-dev zlib1g-dev
 
 # Clean up some disk space
 RUN apt-get clean
