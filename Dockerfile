@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y \
         libsasl2-dev openssl libssl-dev zlib1g-dev
 
 # Clean up some disk space
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
-RUN rm -rf /var/cache/oracle-jdk8-installer
+RUN apt-get clean autoclean
+RUN rm -rf /var/lib/apt/* /var/lib/cache/* /var/lib/log/*
 
