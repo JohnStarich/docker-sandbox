@@ -2,13 +2,23 @@
 FROM ubuntu:latest
 MAINTAINER John Starich <john.starich@thirdship.com>
 
+# Set up repositories for extra packages
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN apt-get update && apt-get install -y build-essential oracle-java8-installer tmux vim zip unzip wget curl netcat inetutils-ping inetutils-telnet inetutils-traceroute man git subversion python python3 python-pip python3-pip
+
+# Install libraries and utilities for a sandbox environment
+RUN apt-get update && apt-get install -y \
+        tmux vim zip unzip man \
+        wget curl netcat inetutils-ping inetutils-telnet inetutils-traceroute \
+        git subversion \
+        build-essential \
+        oracle-java8-installer \
+        python-dev python3-dev python-pip python3-pip gettext \
+        libsasl2-dev libssl-dev zlib1g-dev
+
+# Clean up some disk space
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /var/cache/oracle-jdk8-installer
-
-ENTRYPOINT ["/bin/bash"]
 
