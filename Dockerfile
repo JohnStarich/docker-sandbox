@@ -10,7 +10,7 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 # Install libraries and utilities for a sandbox environment
 RUN apt-get update && apt-get install -y \
         tmux vim zip unzip man \
-        wget curl netcat inetutils-ping inetutils-telnet inetutils-traceroute \
+        wget curl netcat inetutils-ping inetutils-telnet inetutils-traceroute dnsutils \
         git subversion \
         build-essential \
         oracle-java8-installer \
